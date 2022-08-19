@@ -118,91 +118,88 @@ class Post {
     this.format = PostFormat.standard,
     this.categoryIDs,
     this.tagIDs,
-  })  : this.title = new Title(rendered: title),
-        this.featuredMedia = new Media(sourceUrl: featuredMedia),
-        this.content = new Content(rendered: content),
-        this.excerpt = new Excerpt(rendered: excerpt);
+  })  : title = Title(rendered: title),
+        featuredMedia = Media(sourceUrl: featuredMedia),
+        content = Content(rendered: content),
+        excerpt = Excerpt(rendered: excerpt);
 
   Post.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     date = json['date'];
     dateGmt = json['date_gmt'];
-    guid = json['guid'] != null ? new Guid.fromJson(json['guid']) : null;
+    guid = json['guid'] != null ? Guid.fromJson(json['guid']) : null;
     modified = json['modified'];
     modifiedGmt = json['modified_gmt'];
     password = json['password'];
     slug = json['slug'];
     if (json['status'] != null) {
-      PostPageStatus.values.forEach((val) {
+      for (var val in PostPageStatus.values) {
         if (enumStringToName(val.toString()) == json['status']) {
           status = val;
-          return;
+          continue;
         }
-      });
+      }
     }
     type = json['type'];
     link = json['link'];
-    title = json['title'] != null ? new Title.fromJson(json['title']) : null;
-    content =
-        json['content'] != null ? new Content.fromJson(json['content']) : null;
-    excerpt =
-        json['excerpt'] != null ? new Excerpt.fromJson(json['excerpt']) : null;
+    title = json['title'] != null ? Title.fromJson(json['title']) : null;
+    content = json['content'] != null ? Content.fromJson(json['content']) : null;
+    excerpt = json['excerpt'] != null ? Excerpt.fromJson(json['excerpt']) : null;
     authorID = json['author'];
     featuredMediaID = json['featured_media'];
     if (json['comment_status'] != null) {
-      PostCommentStatus.values.forEach((val) {
+      for (var val in PostCommentStatus.values) {
         if (enumStringToName(val.toString()) == json['comment_status']) {
           commentStatus = val;
-          return;
+          continue;
         }
-      });
+      }
     }
     if (json['ping_status'] != null) {
-      PostPingStatus.values.forEach((val) {
+      for (var val in PostPingStatus.values) {
         if (enumStringToName(val.toString()) == json['ping_status']) {
           pingStatus = val;
-          return;
+          continue;
         }
-      });
+      }
     }
     sticky = json['sticky'];
     template = json['template'];
     if (json['format'] != null) {
-      PostFormat.values.forEach((val) {
+      for (var val in PostFormat.values) {
         if (enumStringToName(val.toString()) == json['format']) {
           format = val;
-          return;
+          continue;
         }
-      });
+      }
     }
-    categoryIDs =
-        json['categories'] != null ? json['categories'].cast<int>() : null;
-    tagIDs = json['tags'] != null ? json['tags'].cast<int>() : null;
+    categoryIDs = json['categories']?.cast<int>();
+    tagIDs = json['tags']?.cast<int>();
     permalinkTemplate = json['permalink_template'];
     generatedSlug = json['generated_slug'];
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['date'] = this.date;
-    data['date_gmt'] = this.dateGmt;
-    data['password'] = this.password;
-    data['slug'] = this.slug;
-    data['status'] = enumStringToName(this.status.toString());
-    data['title'] = this.title?.toJson();
-    data['content'] = this.content?.toJson();
-    data['excerpt'] = this.excerpt?.toJson();
-    data['author'] = this.authorID;
-    data['featured_media'] = this.featuredMediaID;
-    data['comment_status'] = enumStringToName(this.commentStatus.toString());
-    data['ping_status'] = enumStringToName(this.pingStatus.toString());
-    data['sticky'] = this.sticky;
-    data['template'] = this.template;
-    data['format'] = enumStringToName(this.format.toString());
-    data['categories'] = listToUrlString(this.categoryIDs ?? []);
-    data['tags'] = listToUrlString(this.tagIDs ?? []);
+    data['date'] = date;
+    data['date_gmt'] = dateGmt;
+    data['password'] = password;
+    data['slug'] = slug;
+    data['status'] = enumStringToName(status.toString());
+    data['title'] = title?.toJson();
+    data['content'] = content?.toJson();
+    data['excerpt'] = excerpt?.toJson();
+    data['author'] = authorID;
+    data['featured_media'] = featuredMediaID;
+    data['comment_status'] = enumStringToName(commentStatus.toString());
+    data['ping_status'] = enumStringToName(pingStatus.toString());
+    data['sticky'] = sticky;
+    data['template'] = template;
+    data['format'] = enumStringToName(format.toString());
+    data['categories'] = listToUrlString(categoryIDs ?? []);
+    data['tags'] = listToUrlString(tagIDs ?? []);
 
     return data;
   }

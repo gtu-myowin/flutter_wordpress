@@ -63,14 +63,14 @@ class Media {
     id = json['id'];
     date = json['date'];
     dateGmt = json['date_gmt'];
-    guid = json['guid'] != null ? new Guid.fromJson(json['guid']) : null;
+    guid = json['guid'] != null ? Guid.fromJson(json['guid']) : null;
     modified = json['modified'];
     modifiedGmt = json['modified_gmt'];
     slug = json['slug'];
     status = json['status'];
     type = json['type'];
     link = json['link'];
-    title = json['title'] != null ? new Title.fromJson(json['title']) : null;
+    title = json['title'] != null ? Title.fromJson(json['title']) : null;
     author = json['author'];
     commentStatus = json['comment_status'];
     pingStatus = json['ping_status'];
@@ -78,50 +78,50 @@ class Media {
     permalinkTemplate = json['permalink_template'];
     generatedSlug = json['generated_slug'];
     description = json['description'] != null
-        ? new Description.fromJson(json['description'])
+        ? Description.fromJson(json['description'])
         : null;
     caption =
-        json['caption'] != null ? new Caption.fromJson(json['caption']) : null;
+        json['caption'] != null ? Caption.fromJson(json['caption']) : null;
     altText = json['alt_text'];
     mediaType = json['media_type'];
     mimeType = json['mime_type'];
     mediaDetails = json['media_details'] != null
-        ? new MediaDetails.fromJson(json['media_details'])
+        ? MediaDetails.fromJson(json['media_details'])
         : null;
     post = json['post'];
     sourceUrl = json['source_url'];
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['id'] = this.id;
-    data['date'] = this.date;
-    data['date_gmt'] = this.dateGmt;
-    data['guid'] = this.guid?.toJson();
-    data['modified'] = this.modified;
-    data['modified_gmt'] = this.modifiedGmt;
-    data['slug'] = this.slug;
-    data['status'] = this.status;
-    data['type'] = this.type;
-    data['link'] = this.link;
-    data['title'] = this.title?.toJson();
-    data['author'] = this.author;
-    data['comment_status'] = this.commentStatus;
-    data['ping_status'] = this.pingStatus;
-    data['template'] = this.template;
-    data['permalink_template'] = this.permalinkTemplate;
-    data['generated_slug'] = this.generatedSlug;
-    data['description'] = this.description?.toJson();
-    data['caption'] = this.caption?.toJson();
-    data['alt_text'] = this.altText;
-    data['media_type'] = this.mediaType;
-    data['mime_type'] = this.mimeType;
-    data['media_details'] = this.mediaDetails?.toJson();
-    data['post'] = this.post;
-    data['source_url'] = this.sourceUrl;
-    data['_links'] = this.lLinks?.toJson();
+    data['id'] = id;
+    data['date'] = date;
+    data['date_gmt'] = dateGmt;
+    data['guid'] = guid?.toJson();
+    data['modified'] = modified;
+    data['modified_gmt'] = modifiedGmt;
+    data['slug'] = slug;
+    data['status'] = status;
+    data['type'] = type;
+    data['link'] = link;
+    data['title'] = title?.toJson();
+    data['author'] = author;
+    data['comment_status'] = commentStatus;
+    data['ping_status'] = pingStatus;
+    data['template'] = template;
+    data['permalink_template'] = permalinkTemplate;
+    data['generated_slug'] = generatedSlug;
+    data['description'] = description?.toJson();
+    data['caption'] = caption?.toJson();
+    data['alt_text'] = altText;
+    data['media_type'] = mediaType;
+    data['mime_type'] = mimeType;
+    data['media_details'] = mediaDetails?.toJson();
+    data['post'] = post;
+    data['source_url'] = sourceUrl;
+    data['_links'] = lLinks?.toJson();
 
     return data;
   }
@@ -142,10 +142,10 @@ class Description {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['raw'] = this.raw;
-    data['rendered'] = this.rendered;
+    data['raw'] = raw;
+    data['rendered'] = rendered;
 
     return data;
   }
@@ -166,10 +166,10 @@ class Caption {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['raw'] = this.raw;
-    data['rendered'] = this.rendered;
+    data['raw'] = raw;
+    data['rendered'] = rendered;
 
     return data;
   }
@@ -194,20 +194,20 @@ class MediaDetails {
     width = json['width'];
     height = json['height'];
     file = json['file'];
-    sizes = json['sizes'] != null ? new Sizes.fromJson(json['sizes']) : null;
+    sizes = json['sizes'] != null ? Sizes.fromJson(json['sizes']) : null;
     imageMeta = json['image_meta'] != null
-        ? new ImageMeta.fromJson(json['image_meta'])
+        ? ImageMeta.fromJson(json['image_meta'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['width'] = this.width;
-    data['height'] = this.height;
-    data['file'] = this.file;
-    data['sizes'] = this.sizes?.toJson();
-    data['image_meta'] = this.imageMeta?.toJson();
+    data['width'] = width;
+    data['height'] = height;
+    data['file'] = file;
+    data['sizes'] = sizes?.toJson();
+    data['image_meta'] = imageMeta?.toJson();
 
     return data;
   }
@@ -232,29 +232,29 @@ class Sizes {
 
   Sizes.fromJson(Map<String, dynamic> json) {
     thumbnail = json['thumbnail'] != null
-        ? new Thumbnail.fromJson(json['thumbnail'])
+        ? Thumbnail.fromJson(json['thumbnail'])
         : null;
     medium =
-        json['medium'] != null ? new Medium.fromJson(json['medium']) : null;
+        json['medium'] != null ? Medium.fromJson(json['medium']) : null;
     mediumLarge = json['medium_large'] != null
-        ? new MediumLarge.fromJson(json['medium_large'])
+        ? MediumLarge.fromJson(json['medium_large'])
         : null;
-    large = json['large'] != null ? new Large.fromJson(json['large']) : null;
+    large = json['large'] != null ? Large.fromJson(json['large']) : null;
     postThumbnail = json['post-thumbnail'] != null
-        ? new PostThumbnail.fromJson(json['post-thumbnail'])
+        ? PostThumbnail.fromJson(json['post-thumbnail'])
         : null;
-    full = json['full'] != null ? new Full.fromJson(json['full']) : null;
+    full = json['full'] != null ? Full.fromJson(json['full']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['thumbnail'] = this.thumbnail?.toJson();
-    data['medium'] = this.medium?.toJson();
-    data['medium_large'] = this.mediumLarge?.toJson();
-    data['large'] = this.large?.toJson();
-    data['post-thumbnail'] = this.postThumbnail?.toJson();
-    data['full'] = this.full?.toJson();
+    data['thumbnail'] = thumbnail?.toJson();
+    data['medium'] = medium?.toJson();
+    data['medium_large'] = mediumLarge?.toJson();
+    data['large'] = large?.toJson();
+    data['post-thumbnail'] = postThumbnail?.toJson();
+    data['full'] = full?.toJson();
 
     return data;
   }
@@ -284,13 +284,13 @@ class Thumbnail {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['file'] = this.file;
-    data['width'] = this.width;
-    data['height'] = this.height;
-    data['mime_type'] = this.mimeType;
-    data['source_url'] = this.sourceUrl;
+    data['file'] = file;
+    data['width'] = width;
+    data['height'] = height;
+    data['mime_type'] = mimeType;
+    data['source_url'] = sourceUrl;
 
     return data;
   }
@@ -320,13 +320,13 @@ class Medium {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['file'] = this.file;
-    data['width'] = this.width;
-    data['height'] = this.height;
-    data['mime_type'] = this.mimeType;
-    data['source_url'] = this.sourceUrl;
+    data['file'] = file;
+    data['width'] = width;
+    data['height'] = height;
+    data['mime_type'] = mimeType;
+    data['source_url'] = sourceUrl;
 
     return data;
   }
@@ -356,13 +356,13 @@ class MediumLarge {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['file'] = this.file;
-    data['width'] = this.width;
-    data['height'] = this.height;
-    data['mime_type'] = this.mimeType;
-    data['source_url'] = this.sourceUrl;
+    data['file'] = file;
+    data['width'] = width;
+    data['height'] = height;
+    data['mime_type'] = mimeType;
+    data['source_url'] = sourceUrl;
 
     return data;
   }
@@ -392,13 +392,13 @@ class Large {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['file'] = this.file;
-    data['width'] = this.width;
-    data['height'] = this.height;
-    data['mime_type'] = this.mimeType;
-    data['source_url'] = this.sourceUrl;
+    data['file'] = file;
+    data['width'] = width;
+    data['height'] = height;
+    data['mime_type'] = mimeType;
+    data['source_url'] = sourceUrl;
 
     return data;
   }
@@ -428,13 +428,13 @@ class PostThumbnail {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['file'] = this.file;
-    data['width'] = this.width;
-    data['height'] = this.height;
-    data['mime_type'] = this.mimeType;
-    data['source_url'] = this.sourceUrl;
+    data['file'] = file;
+    data['width'] = width;
+    data['height'] = height;
+    data['mime_type'] = mimeType;
+    data['source_url'] = sourceUrl;
 
     return data;
   }
@@ -464,13 +464,13 @@ class Full {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['file'] = this.file;
-    data['width'] = this.width;
-    data['height'] = this.height;
-    data['mime_type'] = this.mimeType;
-    data['source_url'] = this.sourceUrl;
+    data['file'] = file;
+    data['width'] = width;
+    data['height'] = height;
+    data['mime_type'] = mimeType;
+    data['source_url'] = sourceUrl;
 
     return data;
   }
@@ -518,19 +518,19 @@ class ImageMeta {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['aperture'] = this.aperture;
-    data['credit'] = this.credit;
-    data['camera'] = this.camera;
-    data['caption'] = this.caption;
-    data['created_timestamp'] = this.createdTimestamp;
-    data['copyright'] = this.copyright;
-    data['focal_length'] = this.focalLength;
-    data['iso'] = this.iso;
-    data['shutter_speed'] = this.shutterSpeed;
-    data['title'] = this.title;
-    data['orientation'] = this.orientation;
+    data['aperture'] = aperture;
+    data['credit'] = credit;
+    data['camera'] = camera;
+    data['caption'] = caption;
+    data['created_timestamp'] = createdTimestamp;
+    data['copyright'] = copyright;
+    data['focal_length'] = focalLength;
+    data['iso'] = iso;
+    data['shutter_speed'] = shutterSpeed;
+    data['title'] = title;
+    data['orientation'] = orientation;
 
     return data;
   }

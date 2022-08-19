@@ -35,39 +35,23 @@ class ParamsCategoryList {
 
   Map<String, String> toMap() {
     return {
-      'context': '${enumStringToName(this.context.toString())}',
-      'page': '${this.pageNum}',
-      'per_page': '${this.perPage}',
-      'search': '${this.searchQuery}',
-      'exclude': '${listToUrlString(this.excludeCategoryIDs)}',
-      'include': '${listToUrlString(this.includeCategoryIDs)}',
-      'order': '${enumStringToName(this.order.toString())}',
-      'orderby': '${enumStringToName(this.orderBy.toString())}',
-      'hide_empty': '${this.hideEmpty}',
-      'parent': '${this.parent == null ? '' : this.parent}',
-      'post': '${this.post == null ? '' : this.post}',
-      'slug': '${this.slug}',
+      'context': enumStringToName(context.toString()),
+      'page': '$pageNum',
+      'per_page': '$perPage',
+      'search': searchQuery,
+      'exclude': listToUrlString(excludeCategoryIDs),
+      'include': listToUrlString(includeCategoryIDs),
+      'order': enumStringToName(order.toString()),
+      'orderby': enumStringToName(orderBy.toString()),
+      'hide_empty': '$hideEmpty',
+      'parent': '${parent ?? ''}',
+      'post': '${post ?? ''}',
+      'slug': slug,
     };
   }
 
-  ParamsCategoryList copyWith({
-    int? pageNum,
-    int? perPage
-  }) {
-    return ParamsCategoryList(
-      context: context,
-      order: order,
-      orderBy: orderBy,
-      pageNum: pageNum ?? this.pageNum,
-      perPage: perPage ?? this.perPage,
-      searchQuery: searchQuery,
-      slug: slug,
-      excludeCategoryIDs: excludeCategoryIDs,
-      hideEmpty: hideEmpty,
-      includeCategoryIDs: includeCategoryIDs,
-      parent: parent,
-      post: post
-    );
+  ParamsCategoryList copyWith({int? pageNum, int? perPage}) {
+    return ParamsCategoryList(context: context, order: order, orderBy: orderBy, pageNum: pageNum ?? this.pageNum, perPage: perPage ?? this.perPage, searchQuery: searchQuery, slug: slug, excludeCategoryIDs: excludeCategoryIDs, hideEmpty: hideEmpty, includeCategoryIDs: includeCategoryIDs, parent: parent, post: post);
   }
 
   @override

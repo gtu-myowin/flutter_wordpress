@@ -19,26 +19,26 @@ class PostStatuses {
 
   PostStatuses.fromJson(Map<String, dynamic> json) {
     publish =
-        json['publish'] != null ? new Publish.fromJson(json['publish']) : null;
+        json['publish'] != null ? Publish.fromJson(json['publish']) : null;
     future =
-        json['future'] != null ? new Future.fromJson(json['future']) : null;
-    draft = json['draft'] != null ? new Draft.fromJson(json['draft']) : null;
+        json['future'] != null ? Future.fromJson(json['future']) : null;
+    draft = json['draft'] != null ? Draft.fromJson(json['draft']) : null;
     pending =
-        json['pending'] != null ? new Pending.fromJson(json['pending']) : null;
+        json['pending'] != null ? Pending.fromJson(json['pending']) : null;
     private =
-        json['private'] != null ? new Private.fromJson(json['private']) : null;
-    trash = json['trash'] != null ? new Trash.fromJson(json['trash']) : null;
+        json['private'] != null ? Private.fromJson(json['private']) : null;
+    trash = json['trash'] != null ? Trash.fromJson(json['trash']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['publish'] = this.publish?.toJson();
-    data['future'] = this.future?.toJson();
-    data['draft'] = this.draft?.toJson();
-    data['pending'] = this.pending?.toJson();
-    data['private'] = this.private?.toJson();
-    data['trash'] = this.trash?.toJson();
+    data['publish'] = publish?.toJson();
+    data['future'] = future?.toJson();
+    data['draft'] = draft?.toJson();
+    data['pending'] = pending?.toJson();
+    data['private'] = private?.toJson();
+    data['trash'] = trash?.toJson();
 
     return data;
   }
@@ -73,20 +73,20 @@ class Publish {
     queryable = json['queryable'];
     showInList = json['show_in_list'];
     slug = json['slug'];
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['name'] = this.name;
-    data['private'] = this.private;
-    data['protected'] = this.protected;
-    data['public'] = this.public;
-    data['queryable'] = this.queryable;
-    data['show_in_list'] = this.showInList;
-    data['slug'] = this.slug;
-    data['_links'] = this.lLinks?.toJson();
+    data['name'] = name;
+    data['private'] = private;
+    data['protected'] = protected;
+    data['public'] = public;
+    data['queryable'] = queryable;
+    data['show_in_list'] = showInList;
+    data['slug'] = slug;
+    data['_links'] = lLinks?.toJson();
 
     return data;
   }
@@ -121,20 +121,20 @@ class Future {
     queryable = json['queryable'];
     showInList = json['show_in_list'];
     slug = json['slug'];
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['name'] = this.name;
-    data['private'] = this.private;
-    data['protected'] = this.protected;
-    data['public'] = this.public;
-    data['queryable'] = this.queryable;
-    data['show_in_list'] = this.showInList;
-    data['slug'] = this.slug;
-    data['_links'] = this.lLinks?.toJson();
+    data['name'] = name;
+    data['private'] = private;
+    data['protected'] = protected;
+    data['public'] = public;
+    data['queryable'] = queryable;
+    data['show_in_list'] = showInList;
+    data['slug'] = slug;
+    data['_links'] = lLinks?.toJson();
 
     return data;
   }
@@ -169,20 +169,20 @@ class Draft {
     queryable = json['queryable'];
     showInList = json['show_in_list'];
     slug = json['slug'];
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['name'] = this.name;
-    data['private'] = this.private;
-    data['protected'] = this.protected;
-    data['public'] = this.public;
-    data['queryable'] = this.queryable;
-    data['show_in_list'] = this.showInList;
-    data['slug'] = this.slug;
-    data['_links'] = this.lLinks?.toJson();
+    data['name'] = name;
+    data['private'] = private;
+    data['protected'] = protected;
+    data['public'] = public;
+    data['queryable'] = queryable;
+    data['show_in_list'] = showInList;
+    data['slug'] = slug;
+    data['_links'] = lLinks?.toJson();
 
     return data;
   }
@@ -217,20 +217,20 @@ class Pending {
     queryable = json['queryable'];
     showInList = json['show_in_list'];
     slug = json['slug'];
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['name'] = this.name;
-    data['private'] = this.private;
-    data['protected'] = this.protected;
-    data['public'] = this.public;
-    data['queryable'] = this.queryable;
-    data['show_in_list'] = this.showInList;
-    data['slug'] = this.slug;
-    data['_links'] = this.lLinks?.toJson();
+    data['name'] = name;
+    data['private'] = private;
+    data['protected'] = protected;
+    data['public'] = public;
+    data['queryable'] = queryable;
+    data['show_in_list'] = showInList;
+    data['slug'] = slug;
+    data['_links'] = lLinks?.toJson();
 
     return data;
   }
@@ -265,20 +265,20 @@ class Private {
     queryable = json['queryable'];
     showInList = json['show_in_list'];
     slug = json['slug'];
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['name'] = this.name;
-    data['private'] = this.private;
-    data['protected'] = this.protected;
-    data['public'] = this.public;
-    data['queryable'] = this.queryable;
-    data['show_in_list'] = this.showInList;
-    data['slug'] = this.slug;
-    data['_links'] = this.lLinks?.toJson();
+    data['name'] = name;
+    data['private'] = private;
+    data['protected'] = protected;
+    data['public'] = public;
+    data['queryable'] = queryable;
+    data['show_in_list'] = showInList;
+    data['slug'] = slug;
+    data['_links'] = lLinks?.toJson();
 
     return data;
   }
@@ -313,20 +313,20 @@ class Trash {
     queryable = json['queryable'];
     showInList = json['show_in_list'];
     slug = json['slug'];
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['name'] = this.name;
-    data['private'] = this.private;
-    data['protected'] = this.protected;
-    data['public'] = this.public;
-    data['queryable'] = this.queryable;
-    data['show_in_list'] = this.showInList;
-    data['slug'] = this.slug;
-    data['_links'] = this.lLinks?.toJson();
+    data['name'] = name;
+    data['private'] = private;
+    data['protected'] = protected;
+    data['public'] = public;
+    data['queryable'] = queryable;
+    data['show_in_list'] = showInList;
+    data['slug'] = slug;
+    data['_links'] = lLinks?.toJson();
 
     return data;
   }

@@ -8,10 +8,10 @@ class Guid {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     
-    data['rendered'] = this.rendered;
-    data['raw'] = this.raw;
+    data['rendered'] = rendered;
+    data['raw'] = raw;
     
     return data;
   }

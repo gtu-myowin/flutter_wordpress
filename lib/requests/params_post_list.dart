@@ -51,56 +51,35 @@ class ParamsPostList {
 
   Map<String, String> toMap() {
     return {
-      'context': '${enumStringToName(this.context.toString())}',
-      'page': '${this.pageNum}',
-      'per_page': '${this.perPage}',
-      'search': '${this.searchQuery}',
-      'after': '${this.afterDate}',
-      'before': '${this.beforeDate}',
-      'author': '${listToUrlString(this.includeAuthorIDs)}',
-      'author_exclude': '${listToUrlString(this.excludeAuthorIDs)}',
-      'include': '${listToUrlString(includePostIDs)}',
-      'exclude': '${listToUrlString(excludePostIDs)}',
-      'offset': '${this.offset == null ? '' : this.offset}',
-      'order': '${enumStringToName(this.order.toString())}',
-      'orderby': '${enumStringToName(this.orderBy.toString())}',
-      'slug': '${this.slug}',
-      'status': '${enumStringToName(this.postStatus.toString())}',
-      'categories': '${listToUrlString(includeCategories)}',
-      'categories_exclude': '${listToUrlString(excludeCategories)}',
-      'tags': '${listToUrlString(includeTags)}',
-      'tags_exclude': '${listToUrlString(excludeTags)}',
-      'sticky': '${this.sticky == null ? '' : this.sticky}',
+      'context': enumStringToName(context.toString()),
+      'page': '$pageNum',
+      'per_page': '$perPage',
+      'search': searchQuery,
+      'after': afterDate,
+      'before': beforeDate,
+      'author': listToUrlString(includeAuthorIDs),
+      'author_exclude': listToUrlString(excludeAuthorIDs),
+      'include': listToUrlString(includePostIDs),
+      'exclude': listToUrlString(excludePostIDs),
+      'offset': '${offset ?? ''}',
+      'order': enumStringToName(order.toString()),
+      'orderby': enumStringToName(orderBy.toString()),
+      'slug': slug,
+      'status': enumStringToName(postStatus.toString()),
+      'categories': listToUrlString(includeCategories),
+      'categories_exclude': listToUrlString(excludeCategories),
+      'tags': listToUrlString(includeTags),
+      'tags_exclude': listToUrlString(excludeTags),
+      'sticky': '${sticky ?? ''}',
     };
   }
 
-ParamsPostList copyWith({
-  int? pageNum,
-  int? perPage,
-}) {
-  return ParamsPostList(
-    afterDate: afterDate,
-    beforeDate: beforeDate,
-    context: context,
-    excludeAuthorIDs: excludeAuthorIDs,
-    excludeCategories: excludeCategories,
-    excludePostIDs: excludePostIDs,
-    excludeTags: excludeTags,
-    includeAuthorIDs: includeAuthorIDs,
-    includeCategories: includeCategories,
-    includePostIDs: includePostIDs,
-    includeTags: includeTags,
-    offset: offset,
-    order: order,
-    orderBy: orderBy,
-    pageNum: pageNum ?? this.pageNum,
-    perPage: perPage ?? this.perPage,
-    postStatus: postStatus,
-    searchQuery: searchQuery,
-    slug: slug,
-    sticky: sticky
-  );
-}
+  ParamsPostList copyWith({
+    int? pageNum,
+    int? perPage,
+  }) {
+    return ParamsPostList(afterDate: afterDate, beforeDate: beforeDate, context: context, excludeAuthorIDs: excludeAuthorIDs, excludeCategories: excludeCategories, excludePostIDs: excludePostIDs, excludeTags: excludeTags, includeAuthorIDs: includeAuthorIDs, includeCategories: includeCategories, includePostIDs: includePostIDs, includeTags: includeTags, offset: offset, order: order, orderBy: orderBy, pageNum: pageNum ?? this.pageNum, perPage: perPage ?? this.perPage, postStatus: postStatus, searchQuery: searchQuery, slug: slug, sticky: sticky);
+  }
 
   @override
   String toString() {

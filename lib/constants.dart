@@ -17,6 +17,7 @@ enum WordPressAuthenticator {
   JWT,
   ApplicationPasswords,
 }
+
 enum WordPressContext { view, embed, edit }
 
 enum Order {
@@ -35,6 +36,7 @@ enum PostOrderBy {
   slug,
   title,
 }
+
 enum PostPageStatus {
   publish,
   future,
@@ -42,14 +44,17 @@ enum PostPageStatus {
   pending,
   private,
 }
+
 enum PostCommentStatus {
   open,
   closed,
 }
+
 enum PostPingStatus {
   open,
   closed,
 }
+
 enum PostFormat {
   standard,
   aside,
@@ -82,6 +87,7 @@ enum CommentOrderBy {
   parent,
   type,
 }
+
 enum CommentStatus {
   all,
   approve,
@@ -89,6 +95,7 @@ enum CommentStatus {
   spam,
   trash,
 }
+
 enum CommentType {
   comment,
   //TODO: Add all comment types
@@ -128,6 +135,7 @@ enum MediaOrderBy {
   slug,
   title,
 }
+
 enum MediaStatus {
   inherit,
   publish,
@@ -136,6 +144,7 @@ enum MediaStatus {
   pending,
   private,
 }
+
 enum MediaType {
   image,
   video,
@@ -151,14 +160,14 @@ String enumStringToName(String enumString) {
 /// Formats a list of [items] to a comma(,) separated string to pass it as a
 /// URL parameter.
 String listToUrlString<T>(List<T> items) {
-  if (items.length == 0) return '';
+  if (items.isEmpty) return '';
 
   return items.join(',');
 }
 
 /// Formats a [Map] of parameters to a string of URL friendly parameters.
 String constructUrlParams(Map<String, String> params) {
-  StringBuffer p = new StringBuffer('/?');
+  StringBuffer p = StringBuffer('/?');
   params.forEach((key, value) {
     if (value != '') {
       p.write('$key=$value');

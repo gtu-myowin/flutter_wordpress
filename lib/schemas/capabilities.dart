@@ -64,27 +64,27 @@ class Capabilities {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['manage_terms'] = this.manageTerms;
-    data['edit_terms'] = this.editTerms;
-    data['delete_terms'] = this.deleteTerms;
-    data['assign_terms'] = this.assignTerms;
-    data['edit_post'] = this.editPost;
-    data['read_post'] = this.readPost;
-    data['delete_post'] = this.deletePost;
-    data['edit_posts'] = this.editPosts;
-    data['edit_others_posts'] = this.editOthersPosts;
-    data['publish_posts'] = this.publishPosts;
-    data['read_private_posts'] = this.readPrivatePosts;
-    data['read'] = this.read;
-    data['delete_posts'] = this.deletePosts;
-    data['delete_private_posts'] = this.deletePrivatePosts;
-    data['delete_published_posts'] = this.deletePublishedPosts;
-    data['delete_others_posts'] = this.deleteOthersPosts;
-    data['edit_private_posts'] = this.editPrivatePosts;
-    data['edit_published_posts'] = this.editPublishedPosts;
-    data['create_posts'] = this.createPosts;
+    data['manage_terms'] = manageTerms;
+    data['edit_terms'] = editTerms;
+    data['delete_terms'] = deleteTerms;
+    data['assign_terms'] = assignTerms;
+    data['edit_post'] = editPost;
+    data['read_post'] = readPost;
+    data['delete_post'] = deletePost;
+    data['edit_posts'] = editPosts;
+    data['edit_others_posts'] = editOthersPosts;
+    data['publish_posts'] = publishPosts;
+    data['read_private_posts'] = readPrivatePosts;
+    data['read'] = read;
+    data['delete_posts'] = deletePosts;
+    data['delete_private_posts'] = deletePrivatePosts;
+    data['delete_published_posts'] = deletePublishedPosts;
+    data['delete_others_posts'] = deleteOthersPosts;
+    data['edit_private_posts'] = editPrivatePosts;
+    data['edit_published_posts'] = editPublishedPosts;
+    data['create_posts'] = createPosts;
     
     return data;
   }

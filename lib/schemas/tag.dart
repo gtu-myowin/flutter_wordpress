@@ -29,20 +29,20 @@ class Tag {
     name = json['name'];
     slug = json['slug'];
     taxonomy = json['taxonomy'];
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['id'] = this.id;
-    data['count'] = this.count;
-    data['description'] = this.description;
-    data['link'] = this.link;
-    data['name'] = this.name;
-    data['slug'] = this.slug;
-    data['taxonomy'] = this.taxonomy;
-    data['_links'] = this.lLinks?.toJson();
+    data['id'] = id;
+    data['count'] = count;
+    data['description'] = description;
+    data['link'] = link;
+    data['name'] = name;
+    data['slug'] = slug;
+    data['taxonomy'] = taxonomy;
+    data['_links'] = lLinks?.toJson();
 
     return data;
   }

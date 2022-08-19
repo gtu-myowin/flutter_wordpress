@@ -16,11 +16,11 @@ class AvatarUrls {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     
-    data['24'] = this.s24;
-    data['48'] = this.s48;
-    data['96'] = this.s96;
+    data['24'] = s24;
+    data['48'] = s48;
+    data['96'] = s96;
 
     return data;
   }

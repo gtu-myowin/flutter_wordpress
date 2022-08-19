@@ -63,48 +63,42 @@ class User {
     slug = json['slug'];
     if (json['roles'] != null) roles = json['roles'].cast<String>();
     registeredDate = json['registered_date'];
-    capabilities = json['capabilities'] != null
-        ? new UserCapabilities.fromJson(json['capabilities'])
-        : null;
-    extraCapabilities = json['extra_capabilities'] != null
-        ? new UserExtraCapabilities.fromJson(json['extra_capabilities'])
-        : null;
-    avatarUrls = json['avatar_urls'] != null
-        ? new AvatarUrls.fromJson(json['avatar_urls'])
-        : null;
+    capabilities = json['capabilities'] != null ? UserCapabilities.fromJson(json['capabilities']) : null;
+    extraCapabilities = json['extra_capabilities'] != null ? UserExtraCapabilities.fromJson(json['extra_capabilities']) : null;
+    avatarUrls = json['avatar_urls'] != null ? AvatarUrls.fromJson(json['avatar_urls']) : null;
 
     if (json['meta'] != null && json['meta'].length > 0) {
-      meta = new Map<String, dynamic>();
+      meta = <String, dynamic>{};
       json['meta'].forEach((k, v) {
         meta![k] = v;
       });
     }
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['id'] = this.id;
-    data['username'] = this.username;
-    data['name'] = this.name;
-    data['first_name'] = this.firstName;
-    data['last_name'] = this.lastName;
-    data['email'] = this.email;
-    data['url'] = this.url;
-    data['description'] = this.description;
-    data['link'] = this.link;
-    data['locale'] = this.locale;
-    data['nickname'] = this.nickname;
-    data['slug'] = this.slug;
-    data['roles'] = this.roles;
-    data['registered_date'] = this.registeredDate;
-    data['capabilities'] = this.capabilities?.toJson();
-    data['extra_capabilities'] = this.extraCapabilities?.toJson();
-    data['avatar_urls'] = this.avatarUrls?.toJson();
-    data['meta'] = this.meta;
-    data['_links'] = this.lLinks?.toJson();
-    data['password'] = this.password;
+    data['id'] = id;
+    data['username'] = username;
+    data['name'] = name;
+    data['first_name'] = firstName;
+    data['last_name'] = lastName;
+    data['email'] = email;
+    data['url'] = url;
+    data['description'] = description;
+    data['link'] = link;
+    data['locale'] = locale;
+    data['nickname'] = nickname;
+    data['slug'] = slug;
+    data['roles'] = roles;
+    data['registered_date'] = registeredDate;
+    data['capabilities'] = capabilities?.toJson();
+    data['extra_capabilities'] = extraCapabilities?.toJson();
+    data['avatar_urls'] = avatarUrls?.toJson();
+    data['meta'] = meta;
+    data['_links'] = lLinks?.toJson();
+    data['password'] = password;
 
     return data;
   }
@@ -310,70 +304,70 @@ class UserCapabilities {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['switch_themes'] = this.switchThemes;
-    data['edit_themes'] = this.editThemes;
-    data['activate_plugins'] = this.activatePlugins;
-    data['edit_plugins'] = this.editPlugins;
-    data['edit_users'] = this.editUsers;
-    data['edit_files'] = this.editFiles;
-    data['manage_options'] = this.manageOptions;
-    data['moderate_comments'] = this.moderateComments;
-    data['manage_categories'] = this.manageCategories;
-    data['manage_links'] = this.manageLinks;
-    data['upload_files'] = this.uploadFiles;
-    data['import'] = this.import;
-    data['unfiltered_html'] = this.unfilteredHtml;
-    data['edit_posts'] = this.editPosts;
-    data['edit_others_posts'] = this.editOthersPosts;
-    data['edit_published_posts'] = this.editPublishedPosts;
-    data['publish_posts'] = this.publishPosts;
-    data['edit_pages'] = this.editPages;
-    data['read'] = this.read;
-    data['level_10'] = this.level10;
-    data['level_9'] = this.level9;
-    data['level_8'] = this.level8;
-    data['level_7'] = this.level7;
-    data['level_6'] = this.level6;
-    data['level_5'] = this.level5;
-    data['level_4'] = this.level4;
-    data['level_3'] = this.level3;
-    data['level_2'] = this.level2;
-    data['level_1'] = this.level1;
-    data['level_0'] = this.level0;
-    data['edit_others_pages'] = this.editOthersPages;
-    data['edit_published_pages'] = this.editPublishedPages;
-    data['publish_pages'] = this.publishPages;
-    data['delete_pages'] = this.deletePages;
-    data['delete_others_pages'] = this.deleteOthersPages;
-    data['delete_published_pages'] = this.deletePublishedPages;
-    data['delete_posts'] = this.deletePosts;
-    data['delete_others_posts'] = this.deleteOthersPosts;
-    data['delete_published_posts'] = this.deletePublishedPosts;
-    data['delete_private_posts'] = this.deletePrivatePosts;
-    data['edit_private_posts'] = this.editPrivatePosts;
-    data['read_private_posts'] = this.readPrivatePosts;
-    data['delete_private_pages'] = this.deletePrivatePages;
-    data['edit_private_pages'] = this.editPrivatePages;
-    data['read_private_pages'] = this.readPrivatePages;
-    data['delete_users'] = this.deleteUsers;
-    data['create_users'] = this.createUsers;
-    data['unfiltered_upload'] = this.unfilteredUpload;
-    data['edit_dashboard'] = this.editDashboard;
-    data['update_plugins'] = this.updatePlugins;
-    data['delete_plugins'] = this.deletePlugins;
-    data['install_plugins'] = this.installPlugins;
-    data['update_themes'] = this.updateThemes;
-    data['install_themes'] = this.installThemes;
-    data['update_core'] = this.updateCore;
-    data['list_users'] = this.listUsers;
-    data['remove_users'] = this.removeUsers;
-    data['promote_users'] = this.promoteUsers;
-    data['edit_theme_options'] = this.editThemeOptions;
-    data['delete_themes'] = this.deleteThemes;
-    data['export'] = this.export;
-    data['administrator'] = this.administrator;
+    data['switch_themes'] = switchThemes;
+    data['edit_themes'] = editThemes;
+    data['activate_plugins'] = activatePlugins;
+    data['edit_plugins'] = editPlugins;
+    data['edit_users'] = editUsers;
+    data['edit_files'] = editFiles;
+    data['manage_options'] = manageOptions;
+    data['moderate_comments'] = moderateComments;
+    data['manage_categories'] = manageCategories;
+    data['manage_links'] = manageLinks;
+    data['upload_files'] = uploadFiles;
+    data['import'] = import;
+    data['unfiltered_html'] = unfilteredHtml;
+    data['edit_posts'] = editPosts;
+    data['edit_others_posts'] = editOthersPosts;
+    data['edit_published_posts'] = editPublishedPosts;
+    data['publish_posts'] = publishPosts;
+    data['edit_pages'] = editPages;
+    data['read'] = read;
+    data['level_10'] = level10;
+    data['level_9'] = level9;
+    data['level_8'] = level8;
+    data['level_7'] = level7;
+    data['level_6'] = level6;
+    data['level_5'] = level5;
+    data['level_4'] = level4;
+    data['level_3'] = level3;
+    data['level_2'] = level2;
+    data['level_1'] = level1;
+    data['level_0'] = level0;
+    data['edit_others_pages'] = editOthersPages;
+    data['edit_published_pages'] = editPublishedPages;
+    data['publish_pages'] = publishPages;
+    data['delete_pages'] = deletePages;
+    data['delete_others_pages'] = deleteOthersPages;
+    data['delete_published_pages'] = deletePublishedPages;
+    data['delete_posts'] = deletePosts;
+    data['delete_others_posts'] = deleteOthersPosts;
+    data['delete_published_posts'] = deletePublishedPosts;
+    data['delete_private_posts'] = deletePrivatePosts;
+    data['edit_private_posts'] = editPrivatePosts;
+    data['read_private_posts'] = readPrivatePosts;
+    data['delete_private_pages'] = deletePrivatePages;
+    data['edit_private_pages'] = editPrivatePages;
+    data['read_private_pages'] = readPrivatePages;
+    data['delete_users'] = deleteUsers;
+    data['create_users'] = createUsers;
+    data['unfiltered_upload'] = unfilteredUpload;
+    data['edit_dashboard'] = editDashboard;
+    data['update_plugins'] = updatePlugins;
+    data['delete_plugins'] = deletePlugins;
+    data['install_plugins'] = installPlugins;
+    data['update_themes'] = updateThemes;
+    data['install_themes'] = installThemes;
+    data['update_core'] = updateCore;
+    data['list_users'] = listUsers;
+    data['remove_users'] = removeUsers;
+    data['promote_users'] = promoteUsers;
+    data['edit_theme_options'] = editThemeOptions;
+    data['delete_themes'] = deleteThemes;
+    data['export'] = export;
+    data['administrator'] = administrator;
 
     return data;
   }
@@ -389,9 +383,9 @@ class UserExtraCapabilities {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['administrator'] = this.administrator;
+    data['administrator'] = administrator;
 
     return data;
   }

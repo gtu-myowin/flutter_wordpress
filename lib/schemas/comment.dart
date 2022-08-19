@@ -58,7 +58,7 @@ class Comment {
     this.dateGmt,
     this.parent = 0,
     this.status,
-  }) : content = new Content(rendered: content);
+  }) : content = Content(rendered: content);
 
   Comment.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -73,46 +73,46 @@ class Comment {
     date = json['date'];
     dateGmt = json['date_gmt'];
     content = (json['content'] != null
-        ? new Content.fromJson(json['content']!)
+        ? Content.fromJson(json['content']!)
         : null)!;
     link = json['link'];
     if (json['status'] != null) {
-      CommentStatus.values.forEach((val) {
+      for (var val in CommentStatus.values) {
         if (enumStringToName(val.toString()) == json['status']) {
           status = val;
-          return;
+          continue;
         }
-      });
+      }
     }
     if (json['type'] != null) {
-      CommentType.values.forEach((val) {
+      for (var val in CommentType.values) {
         if (enumStringToName(val.toString()) == json['type']) {
           type = val;
-          return;
+          continue;
         }
-      });
+      }
     }
     authorAvatarUrls = json['author_avatar_urls'] != null
-        ? new AvatarUrls.fromJson(json['author_avatar_urls'])
+        ? AvatarUrls.fromJson(json['author_avatar_urls'])
         : null;
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['post'] = this.post;
-    data['parent'] = this.parent;
-    data['author'] = this.author;
-    data['author_name'] = this.authorName;
-    data['author_email'] = this.authorEmail;
-    data['author_url'] = this.authorUrl;
-    data['author_ip'] = this.authorIp;
-    data['author_user_agent'] = this.authorUserAgent;
-    data['date'] = this.date;
-    data['date_gmt'] = this.dateGmt;
-    data['content'] = this.content?.toJson();
-    data['status'] = enumStringToName(this.status.toString());
+    data['post'] = post;
+    data['parent'] = parent;
+    data['author'] = author;
+    data['author_name'] = authorName;
+    data['author_email'] = authorEmail;
+    data['author_url'] = authorUrl;
+    data['author_ip'] = authorIp;
+    data['author_user_agent'] = authorUserAgent;
+    data['date'] = date;
+    data['date_gmt'] = dateGmt;
+    data['content'] = content?.toJson();
+    data['status'] = enumStringToName(status.toString());
 
     return data;
   }

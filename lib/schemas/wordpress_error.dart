@@ -13,14 +13,14 @@ class WordPressError {
   WordPressError.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['code'] = this.code;
-    data['message'] = this.message;
+    data['code'] = code;
+    data['message'] = message;
     data['data'] = this.data?.toJson();
 
     return data;
@@ -28,7 +28,7 @@ class WordPressError {
 
   @override
   String toString() {
-    return 'WordPress Error! code: $code, message: $message, status: ${data == null ? null : data?.status}';
+    return 'WordPress Error! code: $code, message: $message, status: ${data?.status}';
   }
 }
 
@@ -42,9 +42,9 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['status'] = this.status;
+    data['status'] = status;
 
     return data;
   }

@@ -14,12 +14,12 @@ class Content {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     
-    data['raw'] = this.raw;
-    data['rendered'] = this.rendered;
-    data['protected'] = this.protected;
-    data['block_version'] = this.blockVersion;
+    data['raw'] = raw;
+    data['rendered'] = rendered;
+    data['protected'] = protected;
+    data['block_version'] = blockVersion;
     
     return data;
   }

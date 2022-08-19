@@ -10,10 +10,10 @@ class Title {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['raw'] = this.raw;
-    data['rendered'] = this.rendered;
+    data['raw'] = raw;
+    data['rendered'] = rendered;
 
     return data;
   }

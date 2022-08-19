@@ -33,17 +33,17 @@ class ParamsUserList {
 
   Map<String, String> toMap() {
     return {
-      'context': '${enumStringToName(this.context.toString())}',
-      'page': '${this.pageNum}',
-      'per_page': '${this.perPage}',
-      'search': '${this.searchQuery}',
-      'include': '${listToUrlString(this.includeUserIDs)}',
-      'exclude': '${listToUrlString(this.excludeUserIDs)}',
-      'offset': '${this.offset == null ? '' : this.offset}',
-      'order': '${enumStringToName(this.order.toString())}',
-      'orderby': '${enumStringToName(this.orderBy.toString())}',
-      'slug': '${this.slug}',
-      'roles': '${listToUrlString(this.roles)}',
+      'context': enumStringToName(context.toString()),
+      'page': '$pageNum',
+      'per_page': '$perPage',
+      'search': searchQuery,
+      'include': listToUrlString(includeUserIDs),
+      'exclude': listToUrlString(excludeUserIDs),
+      'offset': '${offset ?? ''}',
+      'order': enumStringToName(order.toString()),
+      'orderby': enumStringToName(orderBy.toString()),
+      'slug': slug,
+      'roles': listToUrlString(roles),
     };
   }
 

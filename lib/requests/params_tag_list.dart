@@ -33,17 +33,17 @@ class ParamsTagList {
 
   Map<String, String> toMap() {
     return {
-      'context': '${enumStringToName(this.context.toString())}',
-      'page': '${this.pageNum}',
-      'per_page': '${this.perPage}',
-      'search': '${this.searchQuery}',
-      'exclude': '${listToUrlString(this.excludeTagIDs)}',
-      'include': '${listToUrlString(this.includeTagIDs)}',
-      'order': '${enumStringToName(this.order.toString())}',
-      'orderby': '${enumStringToName(this.orderBy.toString())}',
-      'hide_empty': '${this.hideEmpty == null ? '' : this.hideEmpty}',
-      'post': '${this.post == null ? '' : this.post}',
-      'slug': '${this.slug}',
+      'context': enumStringToName(context.toString()),
+      'page': '$pageNum',
+      'per_page': '$perPage',
+      'search': searchQuery,
+      'exclude': listToUrlString(excludeTagIDs),
+      'include': listToUrlString(includeTagIDs),
+      'order': enumStringToName(order.toString()),
+      'orderby': enumStringToName(orderBy.toString()),
+      'hide_empty': '${hideEmpty ?? ''}',
+      'post': '${post ?? ''}',
+      'slug': slug,
     };
   }
 

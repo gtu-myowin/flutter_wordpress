@@ -52,23 +52,23 @@ class Settings {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['title'] = this.title;
-    data['description'] = this.description;
-    data['url'] = this.url;
-    data['email'] = this.email;
-    data['timezone'] = this.timezone;
-    data['date_format'] = this.dateFormat;
-    data['time_format'] = this.timeFormat;
-    data['start_of_week'] = this.startOfWeek;
-    data['language'] = this.language;
-    data['use_smilies'] = this.useSmilies;
-    data['default_category'] = this.defaultCategory;
-    data['default_post_format'] = this.defaultPostFormat;
-    data['posts_per_page'] = this.postsPerPage;
-    data['default_ping_status'] = this.defaultPingStatus;
-    data['default_comment_status'] = this.defaultCommentStatus;
+    data['title'] = title;
+    data['description'] = description;
+    data['url'] = url;
+    data['email'] = email;
+    data['timezone'] = timezone;
+    data['date_format'] = dateFormat;
+    data['time_format'] = timeFormat;
+    data['start_of_week'] = startOfWeek;
+    data['language'] = language;
+    data['use_smilies'] = useSmilies;
+    data['default_category'] = defaultCategory;
+    data['default_post_format'] = defaultPostFormat;
+    data['posts_per_page'] = postsPerPage;
+    data['default_ping_status'] = defaultPingStatus;
+    data['default_comment_status'] = defaultCommentStatus;
 
     return data;
   }

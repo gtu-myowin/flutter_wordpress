@@ -13,18 +13,18 @@ class Taxonomies {
 
   Taxonomies.fromJson(Map<String, dynamic> json) {
     category = json['category'] != null
-        ? new TaxonomyCategory.fromJson(json['category'])
+        ? TaxonomyCategory.fromJson(json['category'])
         : null;
     postTag = json['post_tag'] != null
-        ? new TaxonomyPostTag.fromJson(json['post_tag'])
+        ? TaxonomyPostTag.fromJson(json['post_tag'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['category'] = this.category?.toJson();
-    data['post_tag'] = this.postTag?.toJson();
+    data['category'] = category?.toJson();
+    data['post_tag'] = postTag?.toJson();
 
     return data;
   }
@@ -61,35 +61,35 @@ class TaxonomyCategory {
     name = json['name'];
     slug = json['slug'];
     capabilities = json['capabilities'] != null
-        ? new Capabilities.fromJson(json['capabilities'])
+        ? Capabilities.fromJson(json['capabilities'])
         : null;
     description = json['description'];
     labels =
-        json['labels'] != null ? new Labels.fromJson(json['labels']) : null;
+        json['labels'] != null ? Labels.fromJson(json['labels']) : null;
     types = json['types'].cast<String>();
     showCloud = json['show_cloud'];
     hierarchical = json['hierarchical'];
     restBase = json['rest_base'];
     visibility = json['visibility'] != null
-        ? new Visibility.fromJson(json['visibility'])
+        ? Visibility.fromJson(json['visibility'])
         : null;
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['name'] = this.name;
-    data['slug'] = this.slug;
-    data['capabilities'] = this.capabilities?.toJson();
-    data['description'] = this.description;
-    data['labels'] = this.labels?.toJson();
-    data['types'] = this.types;
-    data['show_cloud'] = this.showCloud;
-    data['hierarchical'] = this.hierarchical;
-    data['rest_base'] = this.restBase;
-    data['visibility'] = this.visibility?.toJson();
-    data['_links'] = this.lLinks?.toJson();
+    data['name'] = name;
+    data['slug'] = slug;
+    data['capabilities'] = capabilities?.toJson();
+    data['description'] = description;
+    data['labels'] = labels?.toJson();
+    data['types'] = types;
+    data['show_cloud'] = showCloud;
+    data['hierarchical'] = hierarchical;
+    data['rest_base'] = restBase;
+    data['visibility'] = visibility?.toJson();
+    data['_links'] = lLinks?.toJson();
 
     return data;
   }
@@ -122,14 +122,14 @@ class Visibility {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['public'] = this.public;
-    data['publicly_queryable'] = this.publiclyQueryable;
-    data['show_admin_column'] = this.showAdminColumn;
-    data['show_in_nav_menus'] = this.showInNavMenus;
-    data['show_in_quick_edit'] = this.showInQuickEdit;
-    data['show_ui'] = this.showUi;
+    data['public'] = public;
+    data['publicly_queryable'] = publiclyQueryable;
+    data['show_admin_column'] = showAdminColumn;
+    data['show_in_nav_menus'] = showInNavMenus;
+    data['show_in_quick_edit'] = showInQuickEdit;
+    data['show_ui'] = showUi;
 
     return data;
   }
@@ -166,35 +166,35 @@ class TaxonomyPostTag {
     name = json['name'];
     slug = json['slug'];
     capabilities = json['capabilities'] != null
-        ? new Capabilities.fromJson(json['capabilities'])
+        ? Capabilities.fromJson(json['capabilities'])
         : null;
     description = json['description'];
     labels =
-        json['labels'] != null ? new Labels.fromJson(json['labels']) : null;
+        json['labels'] != null ? Labels.fromJson(json['labels']) : null;
     types = json['types'].cast<String>();
     showCloud = json['show_cloud'];
     hierarchical = json['hierarchical'];
     restBase = json['rest_base'];
     visibility = json['visibility'] != null
-        ? new Visibility.fromJson(json['visibility'])
+        ? Visibility.fromJson(json['visibility'])
         : null;
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['name'] = this.name;
-    data['slug'] = this.slug;
-    data['capabilities'] = this.capabilities?.toJson();
-    data['labels'] = this.labels?.toJson();
-    data['description'] = this.description;
-    data['types'] = this.types;
-    data['show_cloud'] = this.showCloud;
-    data['hierarchical'] = this.hierarchical;
-    data['rest_base'] = this.restBase;
-    data['visibility'] = this.visibility?.toJson();
-    data['_links'] = this.lLinks?.toJson();
+    data['name'] = name;
+    data['slug'] = slug;
+    data['capabilities'] = capabilities?.toJson();
+    data['labels'] = labels?.toJson();
+    data['description'] = description;
+    data['types'] = types;
+    data['show_cloud'] = showCloud;
+    data['hierarchical'] = hierarchical;
+    data['rest_base'] = restBase;
+    data['visibility'] = visibility?.toJson();
+    data['_links'] = lLinks?.toJson();
 
     return data;
   }
