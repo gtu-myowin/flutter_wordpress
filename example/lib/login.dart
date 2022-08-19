@@ -3,10 +3,12 @@ import 'package:flutter_wordpress/flutter_wordpress.dart' as wp;
 
 import 'display_posts.dart';
 
-const PADDING_16 = EdgeInsets.all(16.0);
-const PADDING_8 = EdgeInsets.all(8.0);
+const padding16 = EdgeInsets.all(16.0);
+const padding8 = EdgeInsets.all(8.0);
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
   @override
   LoginPageState createState() => LoginPageState();
 }
@@ -16,33 +18,35 @@ class LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Login",
           style: TextStyle(fontWeight: FontWeight.w300),
         ),
         centerTitle: true,
       ),
-      body: LoginFields(),
+      body: const LoginFields(),
     );
   }
 }
 
 class LoginFields extends StatefulWidget {
+  const LoginFields({Key? key}) : super(key: key);
+
   @override
   LoginFieldsState createState() => LoginFieldsState();
 }
 
 class LoginFieldsState extends State<LoginFields> {
-  String _username;
-  String _password;
+  String? _username;
+  String? _password;
   bool _isDetailValid = true;
   bool _isValidating = false;
 
   @override
   void initState() {
     super.initState();
-    _username = 'YOUR_USERNAME';
-    _password = 'YOUR_PASSWORD';
+    _username = 'mwdAdmin';
+    _password = 'tempPW!@#456';
   }
 
   @override
@@ -50,15 +54,15 @@ class LoginFieldsState extends State<LoginFields> {
     return Center(
         child: SingleChildScrollView(
       child: Container(
-        padding: PADDING_16,
+        padding: padding16,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: PADDING_8,
+              padding: padding8,
               child: _buildFormField(
-                icon: Icon(Icons.person),
+                icon: const Icon(Icons.person),
                 labelText: "Username",
                 hintText: "Username",
                 initialText: _username,
@@ -66,9 +70,9 @@ class LoginFieldsState extends State<LoginFields> {
               ),
             ),
             Padding(
-              padding: PADDING_8,
+              padding: padding8,
               child: _buildFormField(
-                icon: Icon(Icons.lock),
+                icon: const Icon(Icons.lock),
                 labelText: "Password",
                 hintText: "Password",
                 initialText: _password,
@@ -77,12 +81,12 @@ class LoginFieldsState extends State<LoginFields> {
               ),
             ),
             _isDetailValid
-                ? SizedBox(
+                ? const SizedBox(
                     width: 0.0,
                     height: 0.0,
                   )
-                : Padding(
-                    padding: PADDING_8,
+                : const Padding(
+                    padding: padding8,
                     child: Text(
                       "Invalid Username / Password",
                       style: TextStyle(
@@ -93,12 +97,12 @@ class LoginFieldsState extends State<LoginFields> {
             ElevatedButton(
               onPressed: _isValidating ? () {} : _validateUser,
               child: Padding(
-                padding: PADDING_8,
+                padding: padding8,
                 child: _isValidating
-                    ? CircularProgressIndicator(
+                    ? const CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation(Colors.white),
                       )
-                    : Text('Login'),
+                    : const Text('Login'),
               ),
             ),
           ],
@@ -108,10 +112,10 @@ class LoginFieldsState extends State<LoginFields> {
   }
 
   Widget _buildFormField({
-    Icon icon,
-    String labelText,
-    String hintText,
-    String initialText,
+    Icon? icon,
+    String? labelText,
+    String? hintText,
+    String? initialText,
     TextInputType inputType = TextInputType.text,
     bool obscureText = false,
     onChanged,
@@ -145,15 +149,14 @@ class LoginFieldsState extends State<LoginFields> {
       _isValidating = true;
     });
 
-    wp.WordPress wordPress = new wp.WordPress(
-      baseUrl: 'YOUR WEBSITE URL',
+    wp.WordPress wordPress = wp.WordPress(
+      baseUrl: 'https://www.nepalidhamma.com/',
       authenticator: wp.WordPressAuthenticator.JWT,
       adminName: '',
       adminKey: '',
     );
 
-    final response =
-        wordPress.authenticateUser(username: _username, password: _password);
+    final response = wordPress.authenticateUser(username: _username, password: _password);
 
     response.then((user) {
       setState(() {

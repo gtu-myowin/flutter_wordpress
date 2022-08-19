@@ -6,16 +6,16 @@ class SinglePostPage extends StatelessWidget {
   final wp.WordPress wordPress;
   final wp.Post post;
 
-  SinglePostPage({Key key, @required this.wordPress, @required this.post});
+  const SinglePostPage({Key? key, required this.wordPress, required this.post}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(post.title.rendered),
+        title: Text(post.title!.rendered!),
       ),
       body: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: PostWithComments(wordPress: wordPress, post: post),
       ),
     );
@@ -26,23 +26,23 @@ class PostWithComments extends StatefulWidget {
   final wp.WordPress wordPress;
   final wp.Post post;
 
-  PostWithComments({@required this.wordPress, @required this.post});
+  const PostWithComments({Key? key, required this.wordPress, required this.post}) : super(key: key);
 
   @override
   PostWithCommentsState createState() => PostWithCommentsState();
 }
 
 class PostWithCommentsState extends State<PostWithComments> {
-  String _content;
+  String? _content;
 
-  Future<List<wp.CommentHierarchy>> _comments;
+  Future<List<wp.CommentHierarchy>>? _comments;
 
   @override
   void initState() {
     super.initState();
 
-    _content = widget.post.content.rendered;
-    _content = _content.replaceAll('localhost', '192.168.6.165');
+    _content = widget.post.content!.rendered;
+    _content = _content!.replaceAll('localhost', '192.168.6.165');
 
     fetchComments();
   }
@@ -51,7 +51,9 @@ class PostWithCommentsState extends State<PostWithComments> {
     setState(() {
       _comments = widget.wordPress.fetchCommentsAsHierarchy(
           params: wp.ParamsCommentList(
-        includePostIDs: [widget.post.id],
+        includePostIDs: [
+          widget.post.id!
+        ],
       ));
     });
   }
@@ -67,14 +69,14 @@ class PostWithCommentsState extends State<PostWithComments> {
                 data: _content,
                 // blockSpacing: 0.0,
               ),
-              Divider(),
+              const Divider(),
               Row(
-                children: <Widget>[
+                children: const <Widget>[
                   Icon(Icons.comment),
                   Text('Comments'),
                 ],
               ),
-              Divider(),
+              const Divider(),
             ],
           ),
         ),
@@ -82,7 +84,8 @@ class PostWithCommentsState extends State<PostWithComments> {
           future: _comments,
           builder: (context, snapshot) {
             return SliverList(
-              delegate: _buildCommentsSection(snapshot),
+              // delegate: _buildCommentsSection(snapshot as AsyncSnapshot<List<CommentHierarchy>>),
+              delegate: _buildCommentsSection(snapshot as AsyncSnapshot<List<wp.CommentHierarchy>>),
             );
           },
         ),
@@ -90,15 +93,14 @@ class PostWithCommentsState extends State<PostWithComments> {
     );
   }
 
-  SliverChildDelegate _buildCommentsSection(
-      AsyncSnapshot<List<wp.CommentHierarchy>> snapshot) {
+  SliverChildDelegate _buildCommentsSection(AsyncSnapshot<List<wp.CommentHierarchy>> snapshot) {
     if (snapshot.hasData) {
       return _buildComments(snapshot.data);
     } else if (snapshot.hasError) {
       return SliverChildListDelegate([
         Text(
           'Error fetching comments: ${snapshot.error.toString()}',
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.red,
           ),
         )
@@ -107,7 +109,7 @@ class PostWithCommentsState extends State<PostWithComments> {
 
     return SliverChildListDelegate(
       [
-        Center(
+        const Center(
           child: CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation(Colors.blue),
           ),
@@ -116,14 +118,13 @@ class PostWithCommentsState extends State<PostWithComments> {
     );
   }
 
-  SliverChildBuilderDelegate _buildComments(
-      List<wp.CommentHierarchy> comments) {
+  SliverChildBuilderDelegate _buildComments(List<wp.CommentHierarchy>? comments) {
     return SliverChildBuilderDelegate(
       (BuildContext context, int i) {
-        if (comments == null || comments.length == 0) {
+        if (comments == null || comments.isEmpty) {
           return Center(
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Text(
                 'No comments',
                 style: Theme.of(context).textTheme.bodyText1,
@@ -133,29 +134,28 @@ class PostWithCommentsState extends State<PostWithComments> {
         }
 
         if (i % 2 != 0) {
-          return Divider();
+          return const Divider();
         }
         return _buildCommentTile(comments[(i / 2).ceil()]);
       },
-      childCount:
-          comments == null || comments.length == 0 ? 1 : comments.length * 2,
+      childCount: comments == null || comments.isEmpty ? 1 : comments.length * 2,
     );
   }
 
   Widget _buildCommentTile(wp.CommentHierarchy root) {
     if (root.children == null) {
       return Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Html(
-              data: root.comment.content.rendered,
+              data: root.comment.content!.rendered,
               // blockSpacing: 0.0,
             ),
             Text(
-              root.comment.authorName,
-              style: TextStyle(
+              root.comment.authorName!,
+              style: const TextStyle(
                 color: Colors.grey,
                 fontWeight: FontWeight.w300,
               ),
@@ -169,21 +169,21 @@ class PostWithCommentsState extends State<PostWithComments> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Html(
-              data: root.comment.content.rendered,
+              data: root.comment.content!.rendered,
               // blockSpacing: 0.0,
             ),
             Text(
-              root.comment.authorName,
-              style: TextStyle(
+              root.comment.authorName!,
+              style: const TextStyle(
                 color: Colors.grey,
                 fontWeight: FontWeight.w300,
               ),
             ),
           ],
         ),
-        children: root.children.map((c) {
+        children: root.children!.map((c) {
           return Padding(
-            padding: EdgeInsets.only(left: 16.0),
+            padding: const EdgeInsets.only(left: 16.0),
             child: _buildCommentTile(c),
           );
         }).toList(),
